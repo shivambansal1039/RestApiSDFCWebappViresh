@@ -4,7 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<h3>Hello Viresg : ${message}</h3>
+<h3>Hello Viresh : ${message}</h3>
 <h3>URL Hit Counter : ${counter}</h3>	
 <p></p>
 For testing please ignore 
