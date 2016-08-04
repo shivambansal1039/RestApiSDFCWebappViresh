@@ -20,7 +20,7 @@ public class BaseController {
 
 		mav.getModel().put("message", "Welcome");
 		mav.getModel().put("counter", ++counter);
-		mav.getModel().put("port", system.env("PORT"));
+		mav.getModel().put("port", system.env("DATABASE_URL"));
 		
 		logger.debug("[welcome] counter : {}", counter);
 
