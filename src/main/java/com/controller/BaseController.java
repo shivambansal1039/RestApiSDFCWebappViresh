@@ -21,7 +21,7 @@ public class BaseController {
 		mav.getModel().put("message", "Welcome");
 		mav.getModel().put("counter", ++counter);
 		String DATABASE_URL = System.getenv().get("DATABASE_URL");
-		String port = System.getenv().get("port");
+		String port = System.getenv().get("PORT");
 		mav.getModel().put("url",DATABASE_URL);
 		mav.getModel().put("port", port);
 		
