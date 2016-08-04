@@ -7,6 +7,7 @@
 <h3>Hello test : ${message}</h3>
 <h3>URL Hit Counter : ${counter}</h3>	
 <h3>port number : ${port}</h3>	
+<h3>url : ${url}</h3>	
 <p></p>
 For testing please ignore 
 
