@@ -1,25 +1,16 @@
-
+<!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello Analytics - A quickstart guide for JavaScript</title>
+</head>
 <body>
-<h3>Hello test : ${message}</h3>
-<h3>URL Hit Counter : ${counter}</h3>	
-<h3>port number : ${port}</h3>	
-<h3>url : ${url}</h3>	
-<p></p>
-For testing please ignore 
 
-</body>
+<button id="auth-button" hidden>Authorize</button>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-35686382-5', 'auto');
-	ga('send', 'pageview'); 
+<h1>Hello Analytics</h1>
 
-</script>
+<textarea cols="80" rows="20" id="query-output"></textarea>
 
 <script>
 
@@ -161,5 +152,5 @@ function queryCoreReportingApi(profileId) {
 
 <script src="https://apis.google.com/js/client.js?onload=authorize"></script>
 
-
+</body>
 </html>
