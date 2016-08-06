@@ -60,9 +60,10 @@ function handleAccounts(response) {
     // Get the first Google Analytics account.
 
     var firstAccountId = response.result.items[0].id;
-
+    var firstAccountId2 = response.result.items[1].id;
     // Query for properties.
     queryProperties(firstAccountId);
+    queryProperties(firstAccountId2);
   } else {
     console.log('No accounts found for this user.');
   }
