@@ -8,7 +8,7 @@
 
 <button id="auth-button" hidden>Authorize</button>
 
-<h1>Hello Analytics</h1>
+<h1>Hello Analytics Test</h1>
 
 <textarea cols="80" rows="20" id="query-output"></textarea>
 
