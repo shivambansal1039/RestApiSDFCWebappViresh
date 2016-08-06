@@ -4,17 +4,15 @@
   <meta charset="utf-8">
   <title>Hello Analytics - A quickstart guide for JavaScript</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
 <body>
 
 <button id="auth-button" hidden>Authorize</button>
 
-<h1>Hello Analytics Test</h1>
+<h1>Hello Analytics</h1>
 
 <textarea cols="80" rows="20" id="query-output"></textarea>
 
 <script>
-
 
   // Replace with your client ID from the developer console.
   var CLIENT_ID = '464132775008-jda8q3g2bear73fpa4ko71j6t8h55bvu.apps.googleusercontent.com';
@@ -63,7 +61,6 @@ function handleAccounts(response) {
     debugger;
     var firstAccountId = response.result.items[0].id;
 
-    
     // Query for properties.
     queryProperties(firstAccountId);
   } else {
