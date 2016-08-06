@@ -58,7 +58,7 @@ function handleAccounts(response) {
   // Handles the response from the accounts list method.
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
-    debugger;
+
     var firstAccountId = response.result.items[0].id;
 
     // Query for properties.
