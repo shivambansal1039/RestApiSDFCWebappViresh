@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Hello Analytics - A quickstart guide for JavaScript</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
 <body>
 
 <button id="auth-button" hidden>Authorize</button>
@@ -13,6 +14,7 @@
 <textarea cols="80" rows="20" id="query-output"></textarea>
 
 <script>
+
 
   // Replace with your client ID from the developer console.
   var CLIENT_ID = '464132775008-jda8q3g2bear73fpa4ko71j6t8h55bvu.apps.googleusercontent.com';
@@ -58,8 +60,10 @@ function handleAccounts(response) {
   // Handles the response from the accounts list method.
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
+    debugger;
     var firstAccountId = response.result.items[0].id;
 
+    
     // Query for properties.
     queryProperties(firstAccountId);
   } else {
