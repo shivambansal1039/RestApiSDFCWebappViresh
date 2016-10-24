@@ -26,16 +26,12 @@
                         data: $(this).serialize(),
                         success: function(msg) {
                           alert('Contact created successfully');      
-				setTimeout(function(){
-     				  window.location.reload();
-      				}, 1000);
-                        },
+				 window.location.reload();
+      		        },
                         error: function(msg){
                           alert('Contact createtion failed');
-				setTimeout(function(){
-     				  window.location.reload();
-      				}, 1000);
-                        }
+				window.location.reload();
+                          }
                      	
                     }); 
             });
@@ -49,15 +45,13 @@
                         data: $(this).serialize(),
                         success: function(msg) {
                           alert('Contact updated successfully');    
-				setTimeout(function(){
-     				  window.location.reload();
-      				}, 1000);
+				  window.location.reload();
+      				
                         },
                         error: function(msg){
                           alert('Contact updation failed');
-				setTimeout(function(){
-     				  window.location.reload();
-      				}, 1000);
+				  window.location.reload();
+      				
                         }
                      	
                     }); 
@@ -89,15 +83,15 @@
                   data: $(this).serialize(),
                   success: function(msg) {
                     alert('Contact deleted successfully');
-			  setTimeout(function(){
+			  
      				  window.location.reload();
-      				}, 1000);
+      			
                   },
                   error: function(msg){
                     alert('Contact deletion failed');
-			  setTimeout(function(){
+			 
      				  window.location.reload();
-      				}, 1000);
+      			
                   }
                	
               }); 
