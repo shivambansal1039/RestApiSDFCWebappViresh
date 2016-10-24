@@ -125,7 +125,7 @@
 </script>
 <a href="javascript:createContact();"><b>Create New Contact</b></a><hr>
 <form name="updateContact" id="update-contact" style="display: none;">
-        <h3>Update Cantact</h3>
+        <h3>Update Contact</h3>
         <div class="fields">
         <input type="hidden" id="id" name="id" value=""/>
             <div class="field field-name">
@@ -152,7 +152,7 @@
 </form> 
 
 <form name="createContact" id="create-contact" style="display: none;">
-        <h3>Create Cantact</h3>
+        <h3>Create Contact</h3>
         <div class="fields">
             <div class="field field-name">
                 <label for="fname">First Name</label>
