@@ -1,158 +1,190 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Hello Analytics - A quickstart guide for JavaScript</title>
-</head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+            
 <body>
+<c:url value="/createContact.htm" var="createContact"/>
+<c:url value="/updateContact.htm" var="updateContact"/>
+<c:url value="/deleteContact.htm" var="deleteContact"/>
+<script type="text/javascript">
+	
+        $(document).ready(function(){
 
-<button id="auth-button" hidden>Authorize</button>
+                 
+            $('form[name=createContact]').submit(function(e) {
+                e.preventDefault();
+                     $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '${createContact}',
+                        data: $(this).serialize(),
+                        success: function(msg) {
+                          alert('Contact created successfully');                         
+                        },
+                        error: function(msg){
+                          alert('Contact createtion failed');
+                        }
+                     	
+                    }); 
+            });
 
-<h1>Hello Analytics</h1>
+            $('form[name=updateContact]').submit(function(e) {
+                e.preventDefault();
+                     $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '${updateContact}',
+                        data: $(this).serialize(),
+                        success: function(msg) {
+                          alert('Contact updated successfully');                         
+                        },
+                        error: function(msg){
+                          alert('Contact updation failed');
+                        }
+                     	
+                    }); 
+            });
 
-<textarea cols="80" rows="20" id="query-output"></textarea>
-
-<script>
-
-  // Replace with your client ID from the developer console.
-  var CLIENT_ID = '729575413831-8gciaau6l8ocvcq22eumd83i3nvvree2.apps.googleusercontent.com';
-
-  // Set authorized scope.
-  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
-
-
-  function authorize(event) {
-    // Handles the authorization flow.
-    // `immediate` should be false when invoked from the button click.
-    var useImmdiate = event ? false : true;
-    var authData = {
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      immediate: useImmdiate
-    };
-
-    gapi.auth.authorize(authData, function(response) {
-      var authButton = document.getElementById('auth-button');
-      if (response.error) {
-        authButton.hidden = false;
-      }
-      else {
-        authButton.hidden = true;
-        queryAccounts();
-      }
-    });
-  }
-
-
-function queryAccounts() {
-  // Load the Google Analytics client library.
-  gapi.client.load('analytics', 'v3').then(function() {
-
-    // Get a list of all Google Analytics accounts for this user
-    gapi.client.analytics.management.accounts.list().then(handleAccounts);
-  });
-}
-
-
-function handleAccounts(response) {
-  // Handles the response from the accounts list method.
-  if (response.result.items && response.result.items.length) {
-    // Get the first Google Analytics account.
-
-    var firstAccountId = response.result.items[0].id;
-    var firstAccountId2 = response.result.items[1].id;
-    // Query for properties.
-    queryProperties(firstAccountId);
-    queryProperties(firstAccountId2);
-  } else {
-    console.log('No accounts found for this user.');
-  }
-}
+            $('#delete').click(function(){
+            	$.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '${deleteContact}?id='+tatid,
+                    data: $(this).serialize(),
+                    success: function(msg) {
+                      alert('Contact deleted successfully');                         
+                    },
+                    error: function(msg){
+                      alert('Contact deletion failed');
+                    }
+                 	
+                }); 
+            });
+        });
 
 
-function queryProperties(accountId) {
-  // Get a list of all the properties for the account.
-  gapi.client.analytics.management.webproperties.list(
-      {'accountId': accountId})
-    .then(handleProperties)
-    .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
+        function deleteContact(contactId){
+        	  $.ajax({
+                  type: 'POST',
+                  cache: false,
+                  url: '${deleteContact}?id='+contactId,
+                  data: $(this).serialize(),
+                  success: function(msg) {
+                    alert('Contact deleted successfully');                         
+                  },
+                  error: function(msg){
+                    alert('Contact deletion failed');
+                  }
+               	
+              }); 
+        }
 
+        function createContact(){
+			$('#update-contact').hide();
+			$('#create-contact').show();
+		}
+		
+        function updateContact(contactId){
+			$('#update-contact').show();
+			$('#create-contact').hide();
 
-function handleProperties(response) {
-  // Handles the response from the webproperties list method.
-  if (response.result.items && response.result.items.length) {
-
-    // Get the first Google Analytics account
-    var firstAccountId = response.result.items[0].accountId;
-
-    // Get the first property ID
-    var firstPropertyId = response.result.items[0].id;
-
-    // Query for Views (Profiles).
-    queryProfiles(firstAccountId, firstPropertyId);
-  } else {
-    console.log('No properties found for this user.');
-  }
-}
-
-
-function queryProfiles(accountId, propertyId) {
-  // Get a list of all Views (Profiles) for the first property
-  // of the first Account.
-  gapi.client.analytics.management.profiles.list({
-      'accountId': accountId,
-      'webPropertyId': propertyId
-  })
-  .then(handleProfiles)
-  .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
-
-
-function handleProfiles(response) {
-  // Handles the response from the profiles list method.
-  if (response.result.items && response.result.items.length) {
-    // Get the first View (Profile) ID.
-    var firstProfileId = response.result.items[0].id;
-
-    // Query the Core Reporting API.
-    queryCoreReportingApi(firstProfileId);
-  } else {
-    console.log('No views (profiles) found for this user.');
-  }
-}
-
-
-function queryCoreReportingApi(profileId) {
-  // Query the Core Reporting API for the number sessions for
-  // the past seven days.
-  gapi.client.analytics.data.ga.get({
-    'ids': 'ga:' + profileId,
-    'start-date': '7daysAgo',
-    'end-date': 'today',
-    'metrics': 'ga:sessions'
-  })
-  .then(function(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    document.getElementById('query-output').value = formattedJson;
-  })
-  .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
-
-  // Add an event listener to the 'auth-button'.
-  document.getElementById('auth-button').addEventListener('click', authorize);
+			var str =$('#'+contactId).find('.name').text();
+			var ret = str.split(" ");
+		
+			$('#id').val($('#'+contactId).find('.id').text());
+			$('#fnameupdate').val(ret[0]);
+			$('#lnameupdate').val(ret[1]);
+			$('#mobilephoneupdate').val($('#'+contactId).find('.mobilePhone').text());
+			$('#emailupdate').val($('#'+contactId).find('.email').text());
+		}
 </script>
+<a href="javascript:createContact();"><b>Create New Contact</b></a><hr>
+<form name="updateContact" id="update-contact" style="display: none;">
+        <h3>Update Cantact</h3>
+        <div class="fields">
+        <input type="hidden" id="id" name="id" value=""/>
+            <div class="field field-name">
+                <label for="fnameupdate">First Name</label>
+                <input type="text" id="fnameupdate" name="fnameupdate"tabindex="1" />
+            </div>
+            <div class="field field-name">
+                <label for="lnameupdate">Last Name</label>
+                <input type="text" id="lnameupdate" name="lnameupdate" tabindex="2" required/>
+            </div>
+            <div class="field field-name">
+                <label for="mobilephoneupdate">Mobile Phone</label>
+                <input type="text" id="mobilephoneupdate" name="mobilephoneupdate" tabindex="3" />
+            </div>
+            <div class="field field-name">
+                <label for="emailupdate">Email</label>
+                <input type="text" id="emailupdate" name="emailupdate" tabindex="4" />
+            </div>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Update" tabindex="5">
+	    </div>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form> 
 
-<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+<form name="createContact" id="create-contact" style="display: none;">
+        <h3>Create Cantact</h3>
+        <div class="fields">
+            <div class="field field-name">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname"tabindex="1" />
+            </div>
+            <div class="field field-name">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" tabindex="2" required/>
+            </div>
+            <div class="field field-name">
+                <label for="mobilephone">Mobile Phone</label>
+                <input type="text" name="mobilephone" tabindex="3" />
+            </div>
+            <div class="field field-name">
+                <label for="email">Email</label>
+                <input type="text" name="email" tabindex="4" />
+            </div>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Create" tabindex="5" class="active">
+			<%--<input type="button" id="cancleUpdateProfile"  value="<spring:message code='label.Cancel'/>" class="cancel"> --%>
+        </div>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form> 
+
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Mobile Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${contacts}" var="con">
+      <a href="javascript:updateContact('${con.id}','${con.name}','${con.mobilePhone}','${con.email}');">
+      <tr id='${con.id}'>
+        <td class='id'>${con.id}</td>
+        <td class='name'>${con.name}</td>
+        <td class='mobilePhone'>${con.mobilePhone}</td>
+        <td class='email'>${con.email}</td>
+        <td><a id="delete" href="javascript:deleteContact('${con.id}');">Delete</a></td>
+        <td><a id="update" href="javascript:updateContact('${con.id}');">Update</a></td>
+      </tr>
+      </a>
+    </c:forEach>
+    </tbody>
+  </table>
+
 
 </body>
 </html>
