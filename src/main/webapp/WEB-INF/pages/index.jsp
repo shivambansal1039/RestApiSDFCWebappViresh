@@ -25,10 +25,16 @@
                         url: '${createContact}',
                         data: $(this).serialize(),
                         success: function(msg) {
-                          alert('Contact created successfully');                         
+                          alert('Contact created successfully');      
+				setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                         },
                         error: function(msg){
                           alert('Contact createtion failed');
+				setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                         }
                      	
                     }); 
@@ -42,10 +48,16 @@
                         url: '${updateContact}',
                         data: $(this).serialize(),
                         success: function(msg) {
-                          alert('Contact updated successfully');                         
+                          alert('Contact updated successfully');    
+				setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                         },
                         error: function(msg){
                           alert('Contact updation failed');
+				setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                         }
                      	
                     }); 
@@ -76,10 +88,16 @@
                   url: '${deleteContact}?id='+contactId,
                   data: $(this).serialize(),
                   success: function(msg) {
-                    alert('Contact deleted successfully');                         
+                    alert('Contact deleted successfully');
+			  setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                   },
                   error: function(msg){
                     alert('Contact deletion failed');
+			  setTimeout(function(){
+     				  window.location.reload();
+      				}, 3000);
                   }
                	
               }); 
@@ -102,6 +120,7 @@
 			$('#lnameupdate').val(ret[1]);
 			$('#mobilephoneupdate').val($('#'+contactId).find('.mobilePhone').text());
 			$('#emailupdate').val($('#'+contactId).find('.email').text());
+		 	$(window).scrollTop(0);
 		}
 </script>
 <a href="javascript:createContact();"><b>Create New Contact</b></a><hr>
