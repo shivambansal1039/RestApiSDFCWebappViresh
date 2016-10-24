@@ -28,13 +28,13 @@
                           alert('Contact created successfully');      
 				setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                         },
                         error: function(msg){
                           alert('Contact createtion failed');
 				setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                         }
                      	
                     }); 
@@ -51,13 +51,13 @@
                           alert('Contact updated successfully');    
 				setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                         },
                         error: function(msg){
                           alert('Contact updation failed');
 				setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                         }
                      	
                     }); 
@@ -91,13 +91,13 @@
                     alert('Contact deleted successfully');
 			  setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                   },
                   error: function(msg){
                     alert('Contact deletion failed');
 			  setTimeout(function(){
      				  window.location.reload();
-      				}, 3000);
+      				}, 1000);
                   }
                	
               }); 
