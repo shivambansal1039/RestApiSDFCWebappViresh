@@ -133,7 +133,9 @@ s0.parentNode.insertBefore(s1,s0);
 		 	$(window).scrollTop(0);
 		}
 </script>
-<a href="javascript:createContact();"><b>Create New Contact</b></a><hr>
+<a href="javascript:createContact();"><b>Create New Contact</b></a>
+<a href="dev-viresh.strikingly.com" style="padding-left: 88%;"><b>Contact me</b></a>
+<hr>
 <form name="updateContact" id="update-contact" style="display: none;">
         <h3>Update Contact</h3>
         <div class="fields">
