@@ -42,10 +42,10 @@ public class SalesForceApi {
 	        ApiSession session = new ApiSession();
 	        config = new ApiConfig();
 	        config.setLoginEndpoint("https://login.salesforce.com");
-	        config.setUsername("viresh.hosmani@trailhead.com");
-	        config.setPassword("Viresh@4201qN81JiVbNVWgeUfCBAaKEsvW");
-	        config.setClientId("3MVG9YDQS5WtC11o1ZHvv_K.W5_ysHu_kRnHcq85c1itYJKq0sx_CyAe7KqBd.BX6E4B_NiW04gKQ50oQdPYj");
-	        config.setClientSecret("6733865508404885785");
+	        config.setUsername("viresh.dev@salesforce.com");
+	        config.setPassword("Viresh_1024QUNsYD8gVSqkQaVOK3JtJtuw");
+	        config.setClientId("3MVG9d8..z.hDcPI1Fj2keg5cw5bqFFkRxFgDv.yGgiwrZWRn2UtMuebZbYb3X9HEMaAJha4Ja1KPvte9uAJq");
+	        config.setClientSecret("6441623787008912847");
 	  
 	        forceApi = new ForceApi(config);
 	        session = Auth.authenticate(config);
