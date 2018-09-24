@@ -41,11 +41,11 @@ public class SalesForceApi {
 
 	        ApiSession session = new ApiSession();
 	        config = new ApiConfig();
-	        config.setLoginEndpoint("https://login.salesforce.com");
-	        config.setUsername("viresh.dev@salesforce.com");
-	        config.setPassword("Viresh_1024QUNsYD8gVSqkQaVOK3JtJtuw");
-	        config.setClientId("3MVG9d8..z.hDcPI1Fj2keg5cw5bqFFkRxFgDv.yGgiwrZWRn2UtMuebZbYb3X9HEMaAJha4Ja1KPvte9uAJq");
-	        config.setClientSecret("6441623787008912847");
+	        config.setLoginEndpoint("https://kone--custserv.lightning.force.com");
+	        config.setUsername("satish.dwivedi@infosys.com.custserv");
+	        config.setPassword("kone@123");
+	        config.setClientId("3MVG9sSN_PMn8tjTE8_ztYNEtZiXN5xCVz0cF9uljy.M3bZRBY5AB69bAsZMUbeVIEQsKqJQK_2uVZ.db_L4N");
+	        config.setClientSecret("1108558041964932810");
 	  
 	        forceApi = new ForceApi(config);
 	        session = Auth.authenticate(config);
