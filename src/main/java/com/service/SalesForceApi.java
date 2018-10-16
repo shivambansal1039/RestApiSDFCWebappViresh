@@ -42,8 +42,8 @@ public class SalesForceApi {
 	        ApiSession session = new ApiSession();
 	        config = new ApiConfig();
 	        config.setLoginEndpoint("https://kone--custserv.lightning.force.com");
-	        config.setUsername("satish.dwivedi@infosys.com.custserv");
-	        config.setPassword("kone@123");
+	        config.setUsername("viresh.dev@salesforce.com");
+	        config.setPassword("Viresh_4201WbWr7U402iAS51JaEaUE4nHsZ");
 	        config.setClientId("3MVG9sSN_PMn8tjTE8_ztYNEtZiXN5xCVz0cF9uljy.M3bZRBY5AB69bAsZMUbeVIEQsKqJQK_2uVZ.db_L4N");
 	        config.setClientSecret("1108558041964932810");
 	  
