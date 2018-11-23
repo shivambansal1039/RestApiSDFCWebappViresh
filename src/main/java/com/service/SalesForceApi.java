@@ -42,7 +42,7 @@ public class SalesForceApi {
 	        ApiSession session = new ApiSession();
 	        config = new ApiConfig();
 	        config.setLoginEndpoint("https://shivamlightning-dev-ed.my.salesforce.com");
-	        config.setUsername("shivambansal1039@salesforce.com");
+	        config.setUsername("shivambansal1039@gmail.com");
 	        config.setPassword("shivam@1039tJqKrpwPD7mZs5guGdIwlcbW");
 	        config.setClientId("3MVG9d8..z.hDcPL.RR0RXjyy1hJzjUL3wUZwajOo0D3mCXBaG.mBxl2pQnnO.6spRpbxvkP57HgMv9qy2U6G");
 	        config.setClientSecret("8988704933463251538");
