@@ -206,7 +206,7 @@ s0.parentNode.insertBefore(s1,s0);
     <thead>
       <tr>
         <th>Id</th>
-        <th>Name</th>
+        <th>Full Name</th>
         <th>Mobile Phone</th>
         <th>Email</th>
       </tr>
